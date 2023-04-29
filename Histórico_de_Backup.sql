@@ -1,4 +1,10 @@
 -- este código irá retornar o backup mais recente de cada database, sem repetir
+
+-- Siglas que podem ser utilizadas na linha 28
+-- L - Log
+-- i - Diff
+-- D - Full
+
 WITH CTE AS(
 SELECT 
    CONVERT(CHAR(100), SERVERPROPERTY('Servername')) AS Server, 
@@ -29,7 +35,3 @@ FROM (
 ) t
 WHERE rank = 1 
 ORDER BY backup_start_date DESC
-
--- L - Log
--- i - Diff
--- D - Full
